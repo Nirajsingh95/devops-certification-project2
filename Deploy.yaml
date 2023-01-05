@@ -4,7 +4,7 @@
   gather_facts: no
   tasks:
    - name: Create docker images using apache
-     command: docker build -t php-test .
+     command: docker build -t php-test: nirajsingh22/devops-php-project2
 
    - name: Tag the docker iamge to Docker Hub
      command: docker tag php-test nirajsingh22/devops-php-project2:php-tag
