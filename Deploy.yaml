@@ -1,0 +1,16 @@
+---
+- hosts: all
+  become: yes
+  gather_facts: no
+  tasks:
+   - name: Create docker images using apache
+     command: docker build -t php-test .
+
+   - name: Tag the docker iamge to Docker Hub
+     command: docker tag php-test nirajsingh22/devops-php-project2:php-tag
+
+   - name: Push the docker iamge to Docker Hub
+     command: docker push nirajsingh22/devops-php-project2:php-tag
+
+   - name: Create container
+     command: docker run -it --name php-cont -p 8098:80 php-test
